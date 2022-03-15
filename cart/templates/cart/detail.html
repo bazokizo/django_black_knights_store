@@ -1,0 +1,135 @@
+{% extends "shop/base.html" %}
+{% load static %}
+{% load humanize %}
+{% block title %}
+  Your shopping cart
+{% endblock %}
+
+{% block content %}
+
+
+    <div class="bg-light py-3">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 mb-0"><a href="index.html">Home</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Cart</strong></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="site-section">
+      <div class="container">
+        <div class="row mb-5">
+          <form class="col-md-12" method="post">
+            <div class="site-blocks-table">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th class="product-thumbnail">Image</th>
+                    <th class="product-name">Product</th>
+                    <th class="product-price">Price</th>
+                    <th class="product-quantity">Quantity</th>
+                    <th class="product-total">Remove</th>
+                    <th class="product-remove">Total</th>
+                  </tr>
+                </thead>
+                <tbody>
+                   {% for item in cart %}
+        {% with product=item.product %}
+                  <tr>
+                    <td class="product-thumbnail">
+                      <img src="{{ product.image.url }}" alt="Image" class="img-fluid">
+                    </td>
+                    <td class="product-name">
+                      <h2 class="h5 text-black"> {{ product.name }}</h2>
+                    </td>
+                    <td> KES {{ item.price|intcomma }}</td>
+                              <td>
+              <form action="{% url 'cart:cart_add' product.id %}" method="post">
+               {{item.quantity}}
+                
+              </form>
+            </td>
+                
+            <td>
+              <form action="{% url 'cart:cart_remove' product.id %}" method="post">
+                <input type="submit" value="Remove">
+                {% csrf_token %}
+              </form>
+            </td>
+                        </div>
+                      </div>
+
+                    </td>
+                    <td> KES {{ item.total_price|intcomma }}</td>
+                    
+                  </tr>
+                  {% endwith %}
+                  {% endfor %}
+
+                  
+                </tbody>
+              </table>
+            </div>
+          </form>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="row mb-5">
+              
+              
+
+              <div class="col-md-6">
+                <a href="{% url 'shop:product_list' %}">
+                  <button class="btn btn-primary btn-lg btn-block" >Continue Shopping</button>
+                </a>
+                
+              </div>
+            </div>
+          
+          </div>
+          <div class="col-md-6 pl-5">
+            <div class="row justify-content-end">
+              <div class="col-md-7">
+                <div class="row">
+                  <div class="col-md-12 text-right border-bottom mb-5">
+                    <h3 class="text-black h4 text-uppercase">Cart Totals</h3>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  
+                </div>
+                <div class="row mb-5">
+                  <div class="col-md-6">
+                    <span class="text-black">Total</span>
+                  </div>
+                  <div class="col-md-6 text-right">
+                    <strong class="text-black"> KSH {{ cart.get_total_price|intcomma }}</strong>
+                  </div>
+                </div>
+
+                 <div class="row mb-5">
+                  <div class="col-md-6">
+                    <span class="text-black">Pay on Delivery or</span>
+                    <span class="text-black">Pay via mpesa: TILL NUMBER 5475027</span>
+                  </div>
+                 
+                </div>
+
+                <div class="row">
+                  <div class="col-md-12">
+                    {% if request.user.is_authenticated  %}
+                    <button class="btn btn-primary btn-lg btn-block" onclick="window.location='{% url 'orders:order_create' %}'">Place Order</button>
+                    {% else %}
+                    <button class="btn btn-primary btn-lg btn-block" onclick="window.location='{% url 'shop:signin' %}'">Sign in to Place order</button>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+   {% endblock %}

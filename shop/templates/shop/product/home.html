@@ -1,0 +1,86 @@
+{% extends "shop/base.html" %}
+{% load static %}
+{% load humanize %}
+
+{% block title %}
+  {% if category %}{{ category.name }}{% else %}Products{% endif %}
+{% endblock %}
+
+{% block content %}
+  
+    
+
+   
+
+    <div class="site-blocks-cover" data-aos="fade">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 ml-auto order-md-2 align-self-start">
+            <div class="site-block-cover-content animate__animated ">
+               <h1 class="animate__animated animate__fadeInRightBig animate__slow"  > Black Knights store</h1>
+            <p class="text-lowercase" class=" sub-title animate__animated animate__fadeInRightBig animate__slow">.</p>
+           
+            <p><a href="{% url 'shop:product_list' %}" class="btn btn-black rounded-0  animate__hinge animate__slower animate__slower" >Shop Now</a></p>
+            </div>
+          </div>
+          <div class="col-md-6 order-1 align-self-end animate__animated animate__backInLeft animate__slow">
+            <img src="{% static 'images/bk_background.jpg'%}" alt="Image" class="img-fluid">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="site-section">
+      <div class="container">
+        <div class="title-section mb-5">
+          <h2 class="text-uppercase" data-aos="fade-right" ><span class="d-block">Discover</span> The Collections</h2>
+        </div>
+        <div class="row align-items-stretch">
+          <div class="col-lg-8">
+            <div class="product-item sm-height full-height bg-gray ">
+               
+              <a href="{% url 'shop:btshirts' %}" class="product-category ">black t-shirt </a>
+              
+              <img src="{% static 'images/black_tshirt.jfif' %}" alt="Image" class="img-fluid">
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="product-item sm-height bg-gray mb-4 ">
+              <a href="{% url 'shop:bhoods' %}" class="product-category">black-hoodie </a>
+              <img src="{% static 'images/black_hoodie.jfif' %}" alt="Image" class="img-fluid">
+            </div>
+
+            <div class="product-item sm-height bg-gray ">
+              <a href="{% url 'shop:ytshirts' %}" class="product-category">Yellow-tshirt </a>
+              <img src="{% static 'images/yellow_tshirt.jfif' %}" alt="Image" class="img-fluid">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    
+   
+
+    <div class="site-blocks-cover inner-page py-5" data-aos="fade">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 ml-auto order-md-2 ">
+            <div class="site-block-cover-content" >
+            <h2 class="sub-title" data-aos="fade-left">Welcome to our official website, where you'll get to discover more about our chess club.</h2>
+            <h1 data-aos="fade-left">Click Below</h1>
+            <p><a href="https://blackknights.co.ke/" class="btn btn-black rounded-0" data-aos="fade-left"> black knights </a></p>
+            </div>
+          </div>
+          <div class="col-md-6 order-1 align-self-end" data-aos="fade-right">
+            <img src="{% static 'images/bk_club.jpg' %}" alt="Image" class="img-fluid">
+          </div>
+        </div>
+      </div>
+    </div>
+
+   
+  </div>
+
+ {% endblock %}
