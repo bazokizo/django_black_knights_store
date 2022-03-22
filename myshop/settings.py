@@ -48,7 +48,6 @@ INSTALLED_APPS = [
     'orders.apps.OrdersConfig',
     'crispy_forms',
     'django.contrib.humanize',
-    'phone_field',
     'phonenumber_field',
    
     
