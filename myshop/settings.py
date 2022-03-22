@@ -30,7 +30,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', '0*s*a5+&y(n19d#idftg*vzisv%233
 DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 ALLOWED_HOSTS = ['techstore254.herokuapp.com',
                 'techstore-git-chairopian-dev.apps.sandbox.x8i5.p1.openshiftapps.com',
-                 'guarded-mountain-79380.herokuapp.com'
+                 'black-knights-store.herokuapp.com',
                  '127.0.0.1']
 
 
