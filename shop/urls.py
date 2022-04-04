@@ -18,5 +18,7 @@ path('account/created/',views.signUpView,name = 'signup'),
 path('account/signin/',views.signInView,name = 'signin'),
 path('account/logout/',views.signoutView,name = 'signout'),
 path('search/', views.search, name='search'),
+path('dan/', views.index, name='index'),
+path('dan/daraja/stk-push', views.stk_push_callback, name='mpesa_stk_push_callback'),
 
 ]
